@@ -1,60 +1,45 @@
 import web3 from "./web3";
 
-const address = "0x5dA310ABb96a862f342B9819e5D8E64d53F0FD62";
-
+const address = "0x93720485aC21E9c7Bf7515de34C4b9332dDAaDE1";
 const abi = [
+	{ inputs: [], stateMutability: "nonpayable", type: "constructor" },
 	{
-		constant: true,
-		inputs: [],
-		name: "manager",
-		outputs: [{ name: "", type: "address" }],
-		payable: false,
-		stateMutability: "view",
-		type: "function",
-	},
-	{
-		constant: false,
-		inputs: [],
-		name: "pickWinner",
-		outputs: [],
-		payable: false,
-		stateMutability: "nonpayable",
-		type: "function",
-	},
-	{
-		constant: true,
-		inputs: [],
-		name: "getPlayers",
-		outputs: [{ name: "", type: "address[]" }],
-		payable: false,
-		stateMutability: "view",
-		type: "function",
-	},
-	{
-		constant: false,
 		inputs: [],
 		name: "enter",
 		outputs: [],
-		payable: true,
 		stateMutability: "payable",
 		type: "function",
 	},
 	{
-		constant: true,
-		inputs: [{ name: "", type: "uint256" }],
-		name: "players",
-		outputs: [{ name: "", type: "address" }],
-		payable: false,
+		inputs: [],
+		name: "getPlayers",
+		outputs: [
+			{ internalType: "address payable[]", name: "", type: "address[]" },
+		],
 		stateMutability: "view",
 		type: "function",
 	},
 	{
 		inputs: [],
-		payable: false,
+		name: "manager",
+		outputs: [{ internalType: "address", name: "", type: "address" }],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [],
+		name: "pickWinner",
+		outputs: [],
 		stateMutability: "nonpayable",
-		type: "constructor",
+		type: "function",
+	},
+	{
+		inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+		name: "players",
+		outputs: [{ internalType: "address payable", name: "", type: "address" }],
+		stateMutability: "view",
+		type: "function",
 	},
 ];
-
-const lotteryContract = new web3.eth.Contract(abi, address);
-export default lotteryContract;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default new web3.eth.Contract(abi, address);
